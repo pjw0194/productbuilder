@@ -1,139 +1,176 @@
 :root {
-    --bg-color: #0f172a;
-    --card-bg: #1e293b;
-    --primary-color: #3b82f6;
-    --accent-color: #ef4444; /* For Powerball */
-    --text-color: #f8fafc;
-    --ball-size: 60px;
-    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+	--bg-color-dark: #0f172a;
+	--card-bg-dark: #1e293b;
+	--text-color-dark: #f8fafc;
+	--subtitle-color-dark: #94a3b8;
+
+	--bg-color-light: #f1f5f9;
+	--card-bg-light: #ffffff;
+	--text-color-light: #0f172a;
+	--subtitle-color-light: #475569;
+
+	--primary-color: #3b82f6;
+	--accent-color: #ef4444; /* For Powerball */
+	--ball-size: 60px;
+	--shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: 'Inter', system-ui, -apple-system, sans-serif;
+	transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    overflow: hidden;
+	background-color: var(--bg-color-dark);
+	color: var(--text-color-dark);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	overflow: hidden;
+}
+
+body.light-mode {
+	background-color: var(--bg-color-light);
+	color: var(--text-color-light);
 }
 
 .container {
-    background-color: var(--card-bg);
-    padding: 3rem;
-    border-radius: 20px;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    text-align: center;
-    max-width: 90%;
-    width: 600px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+	background-color: var(--card-bg-dark);
+	padding: 3rem;
+	border-radius: 20px;
+	box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+	text-align: center;
+	max-width: 90%;
+	width: 600px;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.light-mode .container {
+	background-color: var(--card-bg-light);
+	border: 1px solid #e2e8f0;
+}
+
+.header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	margin-bottom: 0.5rem;
+}
+
+.theme-switcher {
+	position: absolute;
+	top: 50%;
+	right: 0;
+	transform: translateY(-50%);
+	cursor: pointer;
+	font-size: 1.5rem;
+	user-select: none;
 }
 
 h1 {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-    background: linear-gradient(to right, #60a5fa, #a855f7);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    font-weight: 800;
+	font-size: 2.5rem;
+	background: linear-gradient(to right, #60a5fa, #a855f7);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+	font-weight: 800;
 }
 
 p.subtitle {
-    color: #94a3b8;
-    margin-bottom: 2rem;
+	color: var(--subtitle-color-dark);
+	margin-bottom: 2rem;
+}
+
+body.light-mode p.subtitle {
+	color: var(--subtitle-color-light);
 }
 
 .numbers-container {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 2.5rem;
-    flex-wrap: wrap;
-    min-height: var(--ball-size); /* Reserve space */
+	display: flex;
+	justify-content: center;
+	gap: 15px;
+	margin-bottom: 2.5rem;
+	flex-wrap: wrap;
+	min-height: var(--ball-size); /* Reserve space */
 }
 
 .ball {
-    width: var(--ball-size);
-    height: var(--ball-size);
-    border-radius: 50%;
-    background: radial-gradient(circle at 30% 30%, #ffffff, #e2e8f0);
-    color: #0f172a;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 700;
-    font-size: 1.25rem;
-    box-shadow: 
-        inset -5px -5px 10px rgba(0,0,0,0.2),
-        inset 5px 5px 10px rgba(255,255,255,0.5),
-        0 10px 15px rgba(0,0,0,0.3);
-    position: relative;
-    transform: scale(0); /* Start hidden for animation */
-    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+	width: var(--ball-size);
+	height: var(--ball-size);
+	border-radius: 50%;
+	background: radial-gradient(circle at 30% 30%, #ffffff, #e2e8f0);
+	color: #0f172a;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-weight: 700;
+	font-size: 1.25rem;
+	box-shadow: inset -5px -5px 10px rgba(0, 0, 0, 0.2),
+		inset 5px 5px 10px rgba(255, 255, 255, 0.5), 0 10px 15px rgba(0, 0, 0, 0.3);
+	position: relative;
+	transform: scale(0); /* Start hidden for animation */
+	animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
 .ball.powerball {
-    background: radial-gradient(circle at 30% 30%, #ef4444, #b91c1c);
-    color: white;
+	background: radial-gradient(circle at 30% 30%, #ef4444, #b91c1c);
+	color: white;
 }
 
 .btn {
-    background: linear-gradient(135deg, #3b82f6, #2563eb);
-    color: white;
-    border: none;
-    padding: 1rem 2.5rem;
-    font-size: 1.1rem;
-    border-radius: 50px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+	background: linear-gradient(135deg, #3b82f6, #2563eb);
+	color: white;
+	border: none;
+	padding: 1rem 2.5rem;
+	font-size: 1.1rem;
+	border-radius: 50px;
+	cursor: pointer;
+	font-weight: 600;
+	transition: transform 0.2s, box-shadow 0.2s;
+	box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
 }
 
 .btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
+	transform: translateY(-2px);
+	box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
 }
 
 .btn:active {
-    transform: translateY(1px);
+	transform: translateY(1px);
 }
 
 .btn:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
-    transform: none;
+	opacity: 0.7;
+	cursor: not-allowed;
+	transform: none;
 }
 
 /* Animations */
 @keyframes popIn {
-    0% {
-        transform: scale(0) translateY(20px);
-        opacity: 0;
-    }
-    100% {
-        transform: scale(1) translateY(0);
-        opacity: 1;
-    }
+	0% {
+		transform: scale(0) translateY(20px);
+		opacity: 0;
+	}
+	100% {
+		transform: scale(1) translateY(0);
+		opacity: 1;
+	}
 }
 
 /* Shine effect on balls */
 .ball::after {
-    content: '';
-    position: absolute;
-    top: 10%;
-    left: 15%;
-    width: 25%;
-    height: 15%;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.8);
-    filter: blur(1px);
+	content: '';
+	position: absolute;
+	top: 10%;
+	left: 15%;
+	width: 25%;
+	height: 15%;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.8);
+	filter: blur(1px);
 }

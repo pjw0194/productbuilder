@@ -1,30 +1,33 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Powerball Generator</title>
+		<link rel="stylesheet" href="index.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Powerball Generator</title>
-	<link rel="stylesheet" href="index.css">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-</head>
+	<body>
+		<div class="container">
+			<div class="header">
+				<h1>Powerball Generator</h1>
+				<div id="theme-switcher" class="theme-switcher">☀️</div>
+			</div>
+			<p class="subtitle">Dream Big, Win Big</p>
 
-<body>
+			<div id="numbers-container" class="numbers-container">
+				<!-- Balls will be injected here by JS -->
+			</div>
 
-	<div class="container">
-		<h1>Powerball Generator</h1>
-		<p class="subtitle">Dream Big, Win Big</p>
-
-		<div id="numbers-container" class="numbers-container">
-			<!-- Balls will be injected here by JS -->
+			<button id="generate-btn" class="btn">Generate Numbers</button>
 		</div>
 
-		<button id="generate-btn" class="btn">Generate Numbers</button>
-	</div>
-
-	<script src="script.js"></script>
-</body>
-
+		<script src="script.js"></script>
+	</body>
 </html>
